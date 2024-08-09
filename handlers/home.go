@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"html/template"
 	"io"
-	"log"
 	"groupie-tracker/data"
 	"net/http"
 )
@@ -54,11 +53,5 @@ func Homehandler(w http.ResponseWriter, r *http.Request) {
 		}
 		Rendertemplate(w, data)
 
-		if err != nil {
-			log.Println(err.Error())
-			return
-		}
-
 	}
 }
-andk
