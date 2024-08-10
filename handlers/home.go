@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"html/template"
 	"io"
-	"log"
 	"groupie-tracker/data"
 	"net/http"
 )
@@ -19,10 +18,11 @@ func init() {
 	}
 } 
 
-func Rendertemplate(w http.ResponseWriter, data interface{}) error {
+func Rendertemplate(w http.ResponseWriter, data interface{}) {
 	err = tpl.ExecuteTemplate(w, "base.html", data)
-
-	return err
+	if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+    }
 }
 
 func Homehandler(w http.ResponseWriter, r *http.Request) {
@@ -51,12 +51,7 @@ func Homehandler(w http.ResponseWriter, r *http.Request) {
 			Title: "Header Set",
 			Bands: Bandis,
 		}
-		err = Rendertemplate(w, data)
-
-		if err != nil {
-			log.Println(err.Error())
-			return
-		}
+		Rendertemplate(w, data)
 
 	} else {
 		http.Error(w, "No respones from remote", resp.StatusCode)
