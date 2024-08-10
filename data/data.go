@@ -14,5 +14,11 @@ type Band struct {
 
 type PageData struct {
 	Title string
-	Bands []Band
+	Bands interface{}
+}
+
+type Location struct {
+	Id        int      `json:"id"`
+	Locations []string `json:"locations"`
+	Dates     string   `json:"dates"`
 }
