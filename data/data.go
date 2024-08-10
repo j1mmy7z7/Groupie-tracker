@@ -27,3 +27,10 @@ type Date struct {
 	Id    int      `json:"id"`
 	Dates []string `json:"dates"`
 }
+
+type Dates_Locations map[string][]string
+
+type Relation struct {
+	Id            int             `json:"id"`
+	Dateslocations Dates_Locations `json:"datesLocations"`
+}
