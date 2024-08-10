@@ -31,6 +31,6 @@ type Date struct {
 type Dates_Locations map[string][]string
 
 type Relation struct {
-	Id            int             `json:"id"`
+	Id             int             `json:"id"`
 	Dateslocations Dates_Locations `json:"datesLocations"`
 }
