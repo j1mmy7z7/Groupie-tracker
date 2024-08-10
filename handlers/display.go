@@ -11,7 +11,18 @@ import (
 func Locationhandler(w http.ResponseWriter, r *http.Request) {
 	// Parse form values
 	if err := r.ParseForm(); err != nil {
-		http.Error(w, "Error parsing form", http.StatusBadRequest)
+		data := data.PageData{
+			Title: "Error",
+			Bands: struct {
+				Message string
+				Code    int
+			}{
+				Message: "Error Parsing Form",
+				Code:    500,
+			},
+		}
+		w.WriteHeader(http.StatusBadRequest)
+		Rendertemplate(w, data)
 		return
 	}
 
@@ -21,7 +32,18 @@ func Locationhandler(w http.ResponseWriter, r *http.Request) {
 	// Fetch data from the URL
 	resp, err := http.Get(url)
 	if err != nil {
-		http.Error(w, "Error fetching data", http.StatusInternalServerError)
+		data := data.PageData{
+			Title: "Error",
+			Bands: struct {
+				Message string
+				Code    int
+			}{
+				Message: "Error fetching data",
+				Code:    500,
+			},
+		}
+		w.WriteHeader(http.StatusInternalServerError)
+		Rendertemplate(w, data)
 		return
 	}
 	defer resp.Body.Close()
@@ -33,14 +55,36 @@ func Locationhandler(w http.ResponseWriter, r *http.Request) {
 
 	// Check for successful response
 	if resp.StatusCode != http.StatusOK {
-		http.Error(w, "Unexpected status code from external service", http.StatusInternalServerError)
+		data := data.PageData{
+			Title: "Error",
+			Bands: struct {
+				Message string
+				Code    int
+			}{
+				Message: "Unexpected status code from external service",
+				Code:    500,
+			},
+		}
+		w.WriteHeader(http.StatusInternalServerError)
+		Rendertemplate(w, data)
 		return
 	}
 
 	// Read and parse the response body
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		http.Error(w, "Error reading response body", http.StatusInternalServerError)
+		data := data.PageData{
+			Title: "Error",
+			Bands: struct {
+				Message string
+				Code    int
+			}{
+				Message: "Error reading response body",
+				Code:    500,
+			},
+		}
+		w.WriteHeader(http.StatusInternalServerError)
+		Rendertemplate(w, data)
 		return
 	}
 
@@ -58,8 +102,12 @@ func Locationhandler(w http.ResponseWriter, r *http.Request) {
 
 	case "Location":
 		if err := json.Unmarshal(body, &location); err != nil {
-			http.Error(w, "Error unmarshalling location data", http.StatusInternalServerError)
-			return
+			data := data.PageData{
+				Title: "Error",
+				Bands: "Error unmarshalling location data",
+			}
+			w.WriteHeader(http.StatusInternalServerError)
+			Rendertemplate(w, data)
 		}
 		data := data.PageData{
 			Title: "Location",
@@ -79,6 +127,16 @@ func Locationhandler(w http.ResponseWriter, r *http.Request) {
 		Rendertemplate(w, data)
 
 	default:
-		http.Error(w, "Unknown form type", http.StatusBadRequest)
+		data := data.PageData{
+			Title: "Error",
+			Bands: struct {
+				Message string
+				Code    int
+			}{
+				Message: "unknown form type",
+				Code:    500,
+			},
+		}
+		Rendertemplate(w, data)
 	}
 }
