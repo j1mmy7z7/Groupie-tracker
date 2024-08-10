@@ -2,14 +2,17 @@ package handlers
 
 import (
 	"encoding/json"
-	"groupie-tracker/data"
 	"html/template"
 	"io"
 	"net/http"
+
+	"groupie-tracker/data"
 )
 
-var tpl *template.Template
-var err error
+var (
+	tpl *template.Template
+	err error
+)
 
 func init() {
 	tpl, err = template.ParseGlob("templates/*.html")
@@ -35,26 +38,24 @@ func Homehandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	defer resp.Body.Close()
-
-	if resp.StatusCode == http.StatusOK {
-		resBody, err := io.ReadAll(resp.Body)
-		if err != nil {
-			http.Error(w, "Error reading reponse data", http.StatusInternalServerError)
-			return
-		}
-
-		var Bandis []data.Band
-
-		json.Unmarshal(resBody, &Bandis)
-
-		data := data.PageData{
-			Title: "Home",
-			Bands: Bandis,
-		}
-		Rendertemplate(w, data)
-
-	} else {
-		http.Error(w, "No respones from remote", resp.StatusCode)
+	// Check for successful response
+	if resp.StatusCode != http.StatusOK {
+		http.Error(w, "Unexpected status code from external service", http.StatusInternalServerError)
 		return
 	}
+
+	resBody, err := io.ReadAll(resp.Body)
+	if err != nil {
+		http.Error(w, "Error reading reponse data", http.StatusInternalServerError)
+		return
+	}
+	var Bandis []data.Band
+
+	json.Unmarshal(resBody, &Bandis)
+
+	data := data.PageData{
+		Title: "Home",
+		Bands: Bandis,
+	}
+	Rendertemplate(w, data)
 }
