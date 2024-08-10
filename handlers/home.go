@@ -53,5 +53,8 @@ func Homehandler(w http.ResponseWriter, r *http.Request) {
 		}
 		Rendertemplate(w, data)
 
+	} else {
+		http.Error(w, "No respones from remote", resp.StatusCode)
+		return
 	}
 }
