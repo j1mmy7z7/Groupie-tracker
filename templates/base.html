@@ -3,5 +3,7 @@
     {{template "Main" .Bands}}
 {{else if eq "location" .Title}}
     {{template "Location" .Bands}}
+{{else if eq "Dates" .Title}}
+    {{template "Dates" .Bands}}
 {{end}}
 {{template "Footer" .}} 
