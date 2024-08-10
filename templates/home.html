@@ -19,7 +19,10 @@
         <input type="hidden" name="url" value="{{.ConcertDates}}">
         <input type="submit" value="Concert Dates">
     </form>
-    <p><a href="{{.Relations}}">Relations</a></p>
+    <form action="/relation" method="post" >
+        <input type="hidden" name="url" value="{{.Relations}}">
+        <input type="submit" value="Relations">
+    </form>
     
 
 {{end}}
