@@ -1,0 +1,10 @@
+{{define "Relation"}}
+    {{range $key, $value := .Dateslocations}}
+        <h4>Location: [{{$key}}]</h4>
+        <ol>
+            {{range $value}}
+                <li>{{.}}</li>
+            {{end}}
+        </ol> 
+    {{end}}
+{{end}}
