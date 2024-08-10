@@ -1,14 +1,10 @@
 package handlers
 
 import (
-	//"encoding/json"
 	"encoding/json"
-	//"fmt"
 	"html/template"
 	"io"
 	"log"
-
-	//"log"
 	"groupie-tracker/data"
 	"net/http"
 )
@@ -62,5 +58,8 @@ func Homehandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
+	} else {
+		http.Error(w, "No respones from remote", resp.StatusCode)
+		return
 	}
 }
