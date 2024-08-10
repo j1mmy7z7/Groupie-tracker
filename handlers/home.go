@@ -2,9 +2,9 @@ package handlers
 
 import (
 	"encoding/json"
+	"groupie-tracker/data"
 	"html/template"
 	"io"
-	"groupie-tracker/data"
 	"net/http"
 )
 
@@ -16,13 +16,13 @@ func init() {
 	if err != nil {
 		return
 	}
-} 
+}
 
 func Rendertemplate(w http.ResponseWriter, data interface{}) {
 	err = tpl.ExecuteTemplate(w, "base.html", data)
 	if err != nil {
-        http.Error(w, err.Error(), http.StatusInternalServerError)
-    }
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
 
 func Homehandler(w http.ResponseWriter, r *http.Request) {
@@ -37,7 +37,7 @@ func Homehandler(w http.ResponseWriter, r *http.Request) {
 	defer resp.Body.Close()
 
 	if resp.StatusCode == http.StatusOK {
-		resBody , err := io.ReadAll(resp.Body)
+		resBody, err := io.ReadAll(resp.Body)
 		if err != nil {
 			http.Error(w, "Error reading reponse data", http.StatusInternalServerError)
 			return
@@ -48,7 +48,7 @@ func Homehandler(w http.ResponseWriter, r *http.Request) {
 		json.Unmarshal(resBody, &Bandis)
 
 		data := data.PageData{
-			Title: "Header Set",
+			Title: "Home",
 			Bands: Bandis,
 		}
 		Rendertemplate(w, data)
