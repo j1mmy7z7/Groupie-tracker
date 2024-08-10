@@ -1,19 +1,15 @@
 package main
 
-import(
-	"net/http"
-	"log"
-	"html/template"
+import (
 	"groupie-tracker/handlers"
+	"log"
+	"net/http"
 )
 
-var tpl *template.Template
+func main() {
 
-
-func main(){
-
-	//tpl, _ := template.ParseGlob("templates/*.html")
 	http.HandleFunc("/", handlers.Homehandler)
+	http.HandleFunc("/location", handlers.Locationhandler)
 
 	log.Println("running on 8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
