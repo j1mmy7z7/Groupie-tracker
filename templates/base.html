@@ -7,5 +7,7 @@
     {{template "Dates" .Bands}}
 {{else if eq "Relations" .Title}}
     {{template "Relation" .Bands}}
+{{else if eq "Error" .Title}}
+    {{template "Error" .Bands}}
 {{end}}
 {{template "Footer" .}} 
