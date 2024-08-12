@@ -1,0 +1,26 @@
+body {
+    min-width: 100vw;
+}
+main {
+    margin: 17px auto ;
+    max-width: 85rem;
+    border: solid red 1px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.card {
+    margin: 10px;
+    width: 25em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    border: solid black 1px;
+}
+
+
+
