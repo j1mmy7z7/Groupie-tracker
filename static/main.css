@@ -3,7 +3,7 @@ body {
   background-color: #011c27;
 }
 main {
-  margin: 17px auto ;
+  margin: 17px auto;
   max-width: 90rem;
   padding: 10px;
   display: flex;
@@ -41,7 +41,7 @@ main {
   line-height: 18px;
   flex-direction: column;
   border-radius: 12px;
-  text-align: center; 
+  text-align: center;
   justify-content: flex-start;
   font-family: monospace;
   font-size: large;
@@ -64,7 +64,9 @@ main {
 
 .img {
   width: 100%;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 img {
@@ -92,7 +94,7 @@ img {
   margin-bottom: 1em;
 }
 
-.card .right .forms form input{
+.card .right .forms form input {
   border: none;
   padding: 0.3125em 0.625em;
   width: 7.4em;
@@ -102,4 +104,36 @@ img {
   background-color: transparent;
   font-size: large;
   font-weight: 400;
+}
+
+@media screen and (max-width: 1339px) and (min-width: 681px) {
+  .card {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .card {
+    flex-direction: column;
+  }
+  .left {
+    width: 100%;
+    height: 15%;
+  }
+
+  .img {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  img {
+    height: 100%;
+    margin-left: 5px;
+  }
+
+  .right {
+    height: 80%;
+  }
 }
