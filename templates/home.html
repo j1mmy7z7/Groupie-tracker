@@ -17,8 +17,8 @@
                 <li>{{.}}</li>
                 {{end}}
             </ol>
-            <h5>creation Date: {{.CreationDate}}</h5>
-            <h5>First Album: {{.FirstAlbum}}</h5>
+            <h5>creation Date: <span style="color: white;">{{.CreationDate}}</span></h5>
+            <h5>First Album: <span style="color: white;">{{.FirstAlbum}}</span></h5>
             <div class="forms">
                 <form action="/display" method="post">
                     <input type="hidden" name="url" value="{{.Locations}}">
