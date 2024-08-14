@@ -1,8 +1,12 @@
 {{define "Dates"}}
-<h3>Concert Dates</h3>
-<ol>
-{{range .Dates}}
-        <li>{{.}}</li>
-    {{end}}
-</ol>
+<main>
+    <div class="dates">
+        <h3>Concert Dates</h3>
+        <ol>
+        {{range .Dates}}
+                <li>{{.}}</li>
+            {{end}}
+        </ol>
+    </div>
+</main>
 {{end}}
