@@ -113,9 +113,9 @@ img {
   font-weight: 400;
 }
 
-.location, .dates, .Relation {
+.display {
   width: 28em;
-  height: 35em;
+  height: auto;
   padding: 0.7em;
   border-radius: 0.8em;
   background-color: transparent;
@@ -125,27 +125,19 @@ img {
   line-height: 24px;
 }
 
-.location ol, .dates ol, .Relation ol {
+.display ol {
   list-style: none;
   font-size: larger;
 }
 
-.location h3, .dates h3 {
+.display h3 {
   font-weight: bolder;
   font-size: 1.7em;
   color: goldenrod;
   margin-bottom: 0.3em;
 }
 
-.Relation{
-  display: flex;
-  width: 40em;
-  flex-wrap: wrap;
-  flex-direction: column;
-  height: 40em;
-}
-
-.Relation h4 {
+.display h4 {
   font-weight: bolder;
   font-size: 1.1em;
   margin-bottom: 0.4em;
