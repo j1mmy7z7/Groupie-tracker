@@ -113,6 +113,46 @@ img {
   font-weight: 400;
 }
 
+.location, .dates, .Relation {
+  width: 28em;
+  height: 35em;
+  padding: 0.7em;
+  border-radius: 0.8em;
+  background-color: transparent;
+  color: whitesmoke;
+  text-align: center;
+  font-family: monospace;
+  line-height: 24px;
+}
+
+.location ol, .dates ol, .Relation ol {
+  list-style: none;
+  font-size: larger;
+}
+
+.location h3, .dates h3 {
+  font-weight: bolder;
+  font-size: 1.7em;
+  color: goldenrod;
+  margin-bottom: 0.3em;
+}
+
+.Relation{
+  display: flex;
+  width: 40em;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 40em;
+}
+
+.Relation h4 {
+  font-weight: bolder;
+  font-size: 1.1em;
+  margin-bottom: 0.4em;
+  color: goldenrod;
+}
+
+
 @media screen and (max-width: 1339px) and (min-width: 681px) {
   .card {
     width: 100%;
