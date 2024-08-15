@@ -1,10 +1,12 @@
 {{define "Location"}}
 <main>
-<h3>Locations</h3>
-<ol>
-{{range .Locations}}
-        <li>{{.}}</li>
-    {{end}}
-</ol>
+    <div class="display">
+        <h3>Locations</h3>
+        <ol>
+        {{range .Locations}}
+                <li>{{.}}</li>
+            {{end}}
+        </ol>        
+    </div>
 </main>
 {{end}}
