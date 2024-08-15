@@ -1,12 +1,20 @@
 {{define "Dates"}}
 <main>
     <div class="display">
-        <h3>Concert Dates</h3>
-        <ol>
-        {{range .Dates}}
-                <li>{{.}}</li>
+        <img src="{{.Image}}" alt="poster">
+        <h3>{{.Name}}</h3>
+        <table>
+            <tr>
+                <th>
+                    <h3 style="color: black;">Concert Dates</h3>
+                </th>
+            </tr>
+            {{range .Dates.Dates}}
+                <tr>
+                    <td>{{.}}</td>
+                </tr>
             {{end}}
-        </ol>
+        </table>
     </div>
 </main>
 {{end}}

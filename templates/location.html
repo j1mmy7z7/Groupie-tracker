@@ -1,12 +1,20 @@
 {{define "Location"}}
 <main>
     <div class="display">
-        <h3>Locations</h3>
-        <ol>
-        {{range .Locations}}
-                <li>{{.}}</li>
+        <img src="{{.Image}}" alt="poster">
+        <h3>{{.Name}}</h3>
+        <table>
+            <tr>
+                <th>
+                    <h3 style="color: black;">Locations</h3>
+                </th>
+            </tr>
+            {{range .Locations.Locations}}
+                <tr>
+                    <td>{{.}}</td>
+                </tr>
             {{end}}
-        </ol>        
+        </table>       
     </div>
 </main>
 {{end}}
