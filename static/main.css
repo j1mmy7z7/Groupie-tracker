@@ -114,7 +114,7 @@ img {
 }
 
 .display {
-  width: 28em;
+  width: 90em;
   height: auto;
   padding: 0.7em;
   border-radius: 0.8em;
@@ -144,6 +144,35 @@ img {
   color: goldenrod;
 }
 
+.display img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+th, td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  background-color: #51c255;
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+  color: #010d10;
+}
+tr:last-child td {
+  border-bottom: none;
+}
 
 @media screen and (max-width: 1339px) and (min-width: 681px) {
   .card {
