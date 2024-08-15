@@ -89,7 +89,7 @@ func Locationhandler(w http.ResponseWriter, r *http.Request) {
 		Rendertemplate(w, data)
 		return
 	}
-
+	// Switch case to select page and render page data
 	switch formType {
 	case "Dates":
 		if err := json.Unmarshal(body, &dates); err != nil {

@@ -14,6 +14,7 @@ var (
 	err error
 )
 
+// Render the temmplate before anything else
 func init() {
 	tpl, err = template.ParseGlob("templates/*.html")
 	if err != nil {
@@ -21,13 +22,12 @@ func init() {
 	}
 }
 
+// Render the template with data
 func Rendertemplate(w http.ResponseWriter, data interface{}) {
-	err = tpl.ExecuteTemplate(w, "base.html", data)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	tpl.ExecuteTemplate(w, "base.html", data)
 }
 
+// Fetch and serve our json data to the homepage
 func Homehandler(w http.ResponseWriter, r *http.Request) {
 	url := "https://groupietrackers.herokuapp.com/api/artists"
 

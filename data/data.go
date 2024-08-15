@@ -1,5 +1,6 @@
 package data
 
+// Structs to capture the json data
 type Band struct {
 	Id           int      `json:"id"`
 	Image        string   `json:"image"`
@@ -12,6 +13,7 @@ type Band struct {
 	Relations    string   `json:"relations"`
 }
 
+// Interface to accept any data stucture used in a the bands field
 type PageData struct {
 	Title string
 	Bands interface{}

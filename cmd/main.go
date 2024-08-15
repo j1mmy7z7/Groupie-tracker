@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 )
-
+// Main function to handle our routes and static files 
 func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -41,8 +41,9 @@ func main() {
 			w.WriteHeader(http.StatusNotFound)
 			handlers.Rendertemplate(w, data)
 		}
-	})
+	}) 
 
+	// go-routine to run our server to check if error occurs before running the application
 	go func() {
 		if err := http.ListenAndServe(":8080", nil); err != nil {
 			log.Fatal(err.Error())
