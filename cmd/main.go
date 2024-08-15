@@ -14,8 +14,18 @@ func main() {
 
 		switch path {
 		case "/":
+			if r.Method != "GET" {
+				w.WriteHeader(http.StatusMethodNotAllowed)
+				w.Write([]byte("method not allowed\n"))
+				return
+			}
 			handlers.Homehandler(w, r)
 		case "/display":
+			if r.Method != "POST" {
+				w.WriteHeader(http.StatusMethodNotAllowed)
+				w.Write([]byte("method not allowed\n"))
+				return
+			}
 			handlers.Locationhandler(w, r)
 		default:
 			data := data.PageData{
