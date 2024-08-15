@@ -28,6 +28,7 @@ func main() {
 					Code:    404,
 				},
 			}
+			w.WriteHeader(http.StatusNotFound)
 			handlers.Rendertemplate(w, data)
 		}
 	})
