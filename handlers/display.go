@@ -28,6 +28,8 @@ func Locationhandler(w http.ResponseWriter, r *http.Request) {
 
 	formType := r.FormValue("form_type")
 	url := r.FormValue("url")
+	image := r.FormValue("image")
+	name := r.FormValue("bandName")
 
 	// Fetch data from the URL
 	resp, err := http.Get(url)
@@ -96,7 +98,15 @@ func Locationhandler(w http.ResponseWriter, r *http.Request) {
 		}
 		data := data.PageData{
 			Title: "Dates",
-			Bands: dates,
+			Bands: struct{
+				Dates data.Date
+				Image string
+				Name string
+			}{
+				Dates: dates,
+				Image: image,
+				Name: name,
+			},
 		}
 		Rendertemplate(w, data)
 
@@ -111,7 +121,15 @@ func Locationhandler(w http.ResponseWriter, r *http.Request) {
 		}
 		data := data.PageData{
 			Title: "Location",
-			Bands: location,
+			Bands: struct{
+				Locations data.Location
+				Image string
+				Name string
+			}{
+				Locations: location,
+				Image: image,
+				Name: name,
+			},
 		}
 		Rendertemplate(w, data)
 
@@ -122,7 +140,15 @@ func Locationhandler(w http.ResponseWriter, r *http.Request) {
 		}
 		data := data.PageData{
 			Title: "Relations",
-			Bands: relations,
+			Bands: struct{
+				Relations data.Relation
+				Image string
+				Name string
+			}{
+				Relations: relations,
+				Image: image,
+				Name: name,
+			},
 		}
 		Rendertemplate(w, data)
 
